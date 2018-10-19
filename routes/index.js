@@ -25,6 +25,7 @@ router.post('/bjb/record', (req, res, next) => {
 })
 const nodemailer = require('nodemailer')
 router.post('/mail', (req, res, next) => {
+    console.log('/mail');
     let params = req.body
     let transporter = nodemailer.createTransport({
         // host: 'smtp.ethereal.email',
