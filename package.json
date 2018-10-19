@@ -6,13 +6,16 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "better-scroll": "^1.13.2",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "jade": "~1.11.0",
+    "mongoose": "^5.3.1",
     "morgan": "~1.9.0",
+    "nodemailer": "^4.6.8",
     "serve-favicon": "~2.4.5"
   }
 }
