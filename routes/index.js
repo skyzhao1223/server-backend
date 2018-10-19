@@ -39,7 +39,7 @@ router.post('/mail', (req, res, next) => {
         }
     })
     let mailOptions = {
-        from: `${params.name} <zhaosky_mail@163.com>`, // sender address
+        from: 'zhaosky_mail@163.com', // sender address
         to: '13426031783@139.com', // list of receivers
         subject: `【留言】${name}个人主页留言`, // Subject line
         // 发送text或者html格式
