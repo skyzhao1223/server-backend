@@ -51,9 +51,10 @@ router.post('/mail', (req, res, next) => {
     console.log('/2');
     transporter.sendMail(mailOptions, (error, info) => {
         console.log('123');
-        if (error) console.log(error);
+        if (error) {
+            return console.log(error);
+        }
         console.log('Message sent: %s', info.messageId);
-        smtpTransport.close()
         // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
     })
     res.send('done')
