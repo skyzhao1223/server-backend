@@ -25,7 +25,6 @@ router.post('/bjb/record', (req, res, next) => {
 })
 const nodemailer = require('nodemailer')
 router.post('/mail', (req, res, next) => {
-    console.log('/mail');
     let params = req.body
     let transporter = nodemailer.createTransport({
         // host: 'smtp.163.com',
@@ -38,7 +37,6 @@ router.post('/mail', (req, res, next) => {
             pass: '163shouquanma',
         }
     })
-    console.log('created');
     let mailOptions = {
         from: '个人主页留言 <zhaosky_mail@163.com>', // sender address
         to: '13426031783@139.com', // list of receivers
