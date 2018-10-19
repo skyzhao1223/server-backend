@@ -45,7 +45,7 @@ router.post('/mail', (req, res, next) => {
         subject: '【留言】个人主页留言', // Subject line
         // 发送text或者html格式
         // text: 'Hello world?', // plain text body
-        html: `称呼：${params.name}邮箱：${params.email}手机号：${params.mobile}内容：${params.content}` // html body
+        html: '<p>称呼</p>' // html body
     }
     // send mail with defined transport object
     console.log('/2');
