@@ -40,24 +40,22 @@ router.post('/mail', (req, res, next) => {
     })
     console.log('created');
     let mailOptions = {
-        from: '留言 <zhaosky_mail@163.com>', // sender address
+        from: '个人主页留言 <zhaosky_mail@163.com>', // sender address
         to: '13426031783@139.com', // list of receivers
-        subject: '【留言】个人主页留言', // Subject line
+        subject: `【留言】个人主页留言 - ${params.name}`, // Subject line
         // 发送text或者html格式
         // text: 'Hello world?', // plain text body
-        html: '<p>称呼</p>' // html body
+        html: `<p>称呼:${params.name}</p><p>邮箱:${params.email}</p><p>手机号:${params.mobile}</p><p>内容:${params.content}</p>` // html body
     }
     // send mail with defined transport object
-    console.log('/2');
     transporter.sendMail(mailOptions, (error, info) => {
-        console.log('123');
         if (error) {
             return console.log(error);
         }
         console.log('Message sent: %s', info.messageId);
         // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
     })
-    res.send('done')
+    res.send(params)
 })
 
 module.exports = router
