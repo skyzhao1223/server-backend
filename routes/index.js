@@ -27,7 +27,7 @@ const nodemailer = require('nodemailer')
 router.post('/mail', (req, res, next) => {
     console.log('/mail');
     let params = req.body
-    let transporter = nodemailer.createTransport('SMTP', {
+    let transporter = nodemailer.createTransport({
         // host: 'smtp.163.com',
         service: '163', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
         // port: 465, // SMTP 端口
@@ -38,7 +38,7 @@ router.post('/mail', (req, res, next) => {
             pass: '163shouquanma',
         }
     })
-    console.log('/1');
+    console.log('created');
     let mailOptions = {
         from: '留言 <zhaosky_mail@163.com>', // sender address
         to: '13426031783@139.com', // list of receivers
