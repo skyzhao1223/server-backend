@@ -38,15 +38,17 @@ router.post('/mail', (req, res, next) => {
             pass: '163shouquanma',
         }
     })
+    console.log('/1');
     let mailOptions = {
         from: 'zhaosky_mail@163.com', // sender address
         to: '13426031783@139.com', // list of receivers
-        subject: `【留言】${name}个人主页留言`, // Subject line
+        subject: '【留言】个人主页留言', // Subject line
         // 发送text或者html格式
         // text: 'Hello world?', // plain text body
         html: `称呼：${params.name}邮箱：${params.email}手机号：${params.mobile}内容：${params.content}` // html body
     }
     // send mail with defined transport object
+    console.log('/2');
     transporter.sendMail(mailOptions, (error, info) => {
         console.log('123');
         if (error) {
