@@ -28,7 +28,7 @@ router.post('/mail', (req, res, next) => {
     console.log('/mail');
     let params = req.body
     let transporter = nodemailer.createTransport({
-        // host: 'smtp.ethereal.email',
+        host: 'smtp.163.com',
         service: '163', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
         port: 465, // SMTP 端口
         secureConnection: true, // 使用了 SSL
