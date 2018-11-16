@@ -3,6 +3,29 @@ var router = express.Router();
 
 var User = require('../models/User');
 
+class Response {
+    constructor(data) {
+        this.status = 'default'
+        this.data = data || 'default'
+        this.message = 'default message'
+    }
+}
+
+class Success extends Response {
+    constructor({status,data,message}) {
+        super(data)
+        this.status = status || 'success'
+        this.message = message || 'success'
+    }
+}
+
+class Error extends Response {
+    constructor({status,data,message}) {
+        super(data)
+        this.status = status || 'error'
+        this.message = message || 'error'
+    }
+}
 
 router.get('/', (req, res, next) => {
     res.send('index')
@@ -48,11 +71,11 @@ router.post('/mail', (req, res, next) => {
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            res.send(error)
+            res.send(new Error({data:error}))
             next()
             return console.log(error);
         }
-        res.send(info)
+        res.send(new Success({data:info}))
         console.log('Message sent: %s', info.messageId);
         next()
         // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
