@@ -48,12 +48,15 @@ router.post('/mail', (req, res, next) => {
     // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            res.send(error)
+            next()
             return console.log(error);
         }
+        res.send(info)
         console.log('Message sent: %s', info.messageId);
+        next()
         // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
     })
-    res.send(params)
 })
 
 module.exports = router
