@@ -27,12 +27,19 @@ class Error extends Response {
     }
 }
 
+router.all('*', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next()
+})
+
 router.get('/', (req, res, next) => {
     res.send('index')
+    next()
 })
 
 router.get('/bianjubang', (req, res, next) => {
     res.render('bianjubang')
+    next()
 })
 
 router.post('/bjb/record', (req, res, next) => {
@@ -45,6 +52,7 @@ router.post('/bjb/record', (req, res, next) => {
         console.log('save status:', err ? 'failed' : 'success');
     })
     res.send(req)
+    next()
 })
 const nodemailer = require('nodemailer')
 router.post('/mail', (req, res, next) => {
@@ -72,8 +80,8 @@ router.post('/mail', (req, res, next) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             res.send(new Error({data:error}))
-            next()
-            return console.log(error);
+            console.log(error)
+            next();
         }
         res.send(new Success({data:info}))
         console.log('Message sent: %s', info.messageId);
